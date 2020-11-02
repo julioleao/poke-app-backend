@@ -7,6 +7,10 @@
     "start": "nodemon",
     "production": "pm2 start src/index.js --name poke-app-backend"
   },
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
