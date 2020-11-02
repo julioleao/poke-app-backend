@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon",
-    "production": "pm2 start src/index.js --name poke-app-backend"
+    "dev": "nodemon",
+    "start": "node src/index.js"
   },
   "engines": {
     "node": ">=10.0.0",
