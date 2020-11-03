@@ -9,7 +9,23 @@ Card.route('get', (req, res, next) => {
     if (!err) {
       res.json(docs);
     } else {
-      res.status(500).json({ errors: [error] });
+      res.status(500).json({ errors: [err] });
+    }
+  });
+});
+
+Card.route('post', (req, res, next) => {
+  const name = req.body.name || '';
+  const img = req.body.img || '';
+  const newCard = new Card({
+    name,
+    img,
+  });
+  newCard.save((err) => {
+    if (err) {
+      return sendErrorsFromDB(res, err);
+    } else {
+      res.status(201).json();
     }
   });
 });

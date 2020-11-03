@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 const emailRegex = /\S+@\S+\.\S+/;
-const passwordRegex = /((?=.*$).{4,20})/;
+const passwordRegex = /((?=.*$).{4,12})/;
 
 const sendErrorsFromDB = (res, dbErrors) => {
   const errors = [];
@@ -54,14 +54,12 @@ const signup = (req, res, next) => {
   }
 
   if (!email.match(emailRegex)) {
-    return res
-      .status(400)
-      .send({ errors: ['O e-mail informado está inválido'] });
+    return res.status(400).send({ errors: ['E-mail inválido'] });
   }
 
   if (!password.match(passwordRegex)) {
     return res.status(400).send({
-      errors: ['Senha precisar ter tamanho entre 4-20 caracteres'],
+      errors: ['Senha precisar ter entre 4-12 caracteres'],
     });
   }
 
