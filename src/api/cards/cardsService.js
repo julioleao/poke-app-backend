@@ -38,9 +38,8 @@ const sendErrorsFromDB = (res, dbErrors) => {
 };
 
 Card.route('search', (req, res, next) => {
-  const name = req.query.name;
-
-  Card.find(name ? { name } : {}, (err, card) => {
+  const name = req.body.name;
+  Card.find(name ? { name: new RegExp(name, 'i') } : {}, (err, card) => {
     res.json(card);
   });
 });
